@@ -14,9 +14,14 @@ namespace GeekQuiz.Controllers
 {
     public class TriviaController : ApiController
     {
-		private TriviaContext _context = new TriviaContext();
+	    private TriviaContext _context;
 
-	    // GET api/Trivia
+		public TriviaController(TriviaContext context)
+		{
+			_context = context;
+		}
+
+		// GET api/Trivia
 		public async Task<IHttpActionResult> Get()
 	    {
 		    var userId = User.Identity.Name;

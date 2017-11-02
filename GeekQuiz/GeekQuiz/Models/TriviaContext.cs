@@ -1,9 +1,11 @@
-﻿namespace GeekQuiz.Models
+﻿using System.Threading.Tasks;
+
+namespace GeekQuiz.Models
 {
     using System.Data.Entity;
 
-    public class TriviaContext : DbContext
-    {
+	public class TriviaContext : DbContext
+	{
         public TriviaContext()
             : base("name=DefaultConnection")
         {
