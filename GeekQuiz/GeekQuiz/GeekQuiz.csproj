@@ -206,8 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="App_Start\SimpleInjectorWebApi.cs" />
-    <Compile Include="App_Start\SimpleInjectorMvc.cs" />
+    <Compile Include="App_Start\SimpleInjector.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

@@ -18,8 +18,7 @@ namespace GeekQuiz
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-			SimpleInjectorMvc.Configure();
-			SimpleInjectorWeApi.Configure();
+			SimpleInjector.Configure();
         }
     }
 }

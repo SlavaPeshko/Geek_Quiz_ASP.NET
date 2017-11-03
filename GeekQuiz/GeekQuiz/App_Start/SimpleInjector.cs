@@ -16,26 +16,35 @@ using SimpleInjector.Integration.WebApi;
 
 namespace GeekQuiz
 {
-	public static class SimpleInjectorMvc
+	public class SimpleInjector
 	{
 		public static void Configure()
 		{
+			//create container
 			var container = new Container();
 
 			container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
 
 			InitializeContainer(container);
 
+			//register for mvc controller
 			container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
-			container.RegisterMvcIntegratedFilterProvider();
+			//register for api contoller
+			container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
 
 			container.Verify();
 
+			//resolver for mvc
 			DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
+			//resolver for api
+			GlobalConfiguration.Configuration.DependencyResolver =
+				new SimpleInjectorWebApiDependencyResolver(container);
 		}
 
 		private static void InitializeContainer(Container container)
 		{
+			container.Register<TriviaContext>(Lifestyle.Scoped);
+
 			container.Register<ApplicationSignInManager>(Lifestyle.Scoped);
 			container.Register<ApplicationUserManager>(Lifestyle.Scoped);
 
